@@ -2,11 +2,12 @@ import React from 'react';
 import {
     createAppContainer,
     createDrawerNavigator,
-    createSwitchNavigator
+    createStackNavigator
 } from 'react-navigation';
 
 import Menu from './components/Menu'
 import Home from './pages/Home'
+import Details from './pages/Details'
 import commonStyles from './commonStyles'
 
 const MenuRoutes = {
@@ -27,7 +28,7 @@ const MenuConfig = {
         labelStyle: {
             fontWeight: 'normal',
             color: commonStyles.colors.mainText,
-            fontSize: commonStyles.fontSize.menu
+            fontSize: commonStyles.font.fontSize.menu
         },
         activeLabelStyle: {
             color: commonStyles.colors.primary,
@@ -40,14 +41,16 @@ const MainRoutes = {
     Home: {
         name: 'Home',
         screen: MenuNavigator
+    },
+    Details: {
+        name: 'Details',
+        screen: Details
     }
 }
 
-const MainNavigator = createSwitchNavigator(MainRoutes, {
+const MainNavigator = createStackNavigator(MainRoutes, {
     initialRouteName: 'Home',
-    navigationOptions: {
-        header: null // Will hide header for all screens of current stack navigator,
-    }
+    headerMode: 'none'
 })
 
 const App = createAppContainer(MainNavigator);

@@ -1,26 +1,28 @@
 export default {
-    fontFamily: 'Roboto',
     colors: {
-        primary: '#4a4793',
-        secondary: '#3355BB',
-        botao: '#504DA1',
-        botaoSecondary: '#f0f3ff',
-        mainRed: '#B22222',
-        mainText: '#222',
-        subText: '#878787',
-        formText: '#716CDF',
-        borderColor: '#cfcfcf',
-        statusBar: '#4a4793',
+        primary: '#30A3D5',
+        statusBar: '#30A3D5',
         background: '#f3f3f3',
-        borderMenuButtonColor: '#b6b4d6'
+        mainText: '#2f2f2f',
+        subText: '#7a7a7a',
+        link: '#30A3D5'
     },
-    fontSize: {
-        menu: 18,
-        title: 18,
-        naoEncontrado: 18,
-        primary: 16,
-        subText: 13,
-        minText: 11,
+    font: {
+        fontSize: {
+            large: 16,
+            regular: 14,
+            medium: 12,
+            small: 11,
+            tiny: 10,
+        },
+        fontWeight: "600"
+    },
+    metrics: {
+        baseMargin: 10,
+        basePadding: 15,
+        baseMarginVertical: 4,
+        baseMarginHorizontal: 10,
+        borderRadius: 5
     },
     shadow: {
         shadowColor: "#000",

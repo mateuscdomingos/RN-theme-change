@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 import { 
     View, 
+    Text,
     StatusBar,
-    FlatList
 } from 'react-native';
 import {
     Container,
@@ -18,22 +18,18 @@ import {
 import commonStyles from '../../commonStyles'
 import styles from './styles'
 
-import newsList from '../../assets/json'
-import News from '../../components/News'
-
 // import { Container } from './styles';
 
-export default class Home extends Component {
+export default class Details extends Component {
     state = {
-        newsList: []
+        item: {}
     }
 
     componentDidMount = () => { 
-        const news = newsList
-        this.setState({ newsList: news }, () => console.log(this.state.newsList)) 
+        let item = this.props.navigation.getParam('new')
+        console.log(item)
+        this.setState({ item })
     }
-
-    openDetails = (item) => this.props.navigation.navigate('Details', { new: item })
 
     render() {
         return (
@@ -41,18 +37,17 @@ export default class Home extends Component {
                 <Header hasTabs style={{ backgroundColor: commonStyles.colors.primary }}>
                     <StatusBar barStyle="light-content" backgroundColor={commonStyles.colors.statusBar} />
                     <Left >
-                        <Button transparent onPress={() => this.props.navigation.openDrawer() }>
-                            <Icon name="menu" style={{color: '#FFFFFF'}} />
+                        <Button transparent onPress={() => console.log(this.props.navigation.goBack()) }>
+                            <Icon name="arrow-back" style={{color: '#FFFFFF'}} />
                         </Button>
                     </Left>
                     <Body >
-                        <Title style={{ color: '#FFFFFF', fontSize: 16 }}>Home</Title>
+                        <Title style={{ color: '#FFFFFF', fontSize: 16 }}>Details</Title>
                     </Body>
                 </Header>
-                <View style={styles.body}>
-                    <FlatList data={this.state.newsList}
-                    keyExtractor={item =>  `${item.id}`}
-                    renderItem={({ item }) => <News new={ item } openDetails={ this.openDetails } />} />
+                <View style={[styles.newContainer, styles.shadow]}>
+                    <Text style={styles.title}>{this.state.item.title}</Text>
+                    <Text style={styles.body}>{this.state.item.body}</Text>
                 </View>
             </Container>
         );
