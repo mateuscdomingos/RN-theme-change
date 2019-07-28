@@ -8,6 +8,13 @@ const styles = StyleSheet.create({
     },
     body: {
         flex: 1,
+    },
+    header: { 
+        backgroundColor: commonStyles.colors.primary 
+    },
+    headerTitle: { 
+        color: '#FFFFFF', 
+        fontSize: 16 
     }
 });
   

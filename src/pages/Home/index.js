@@ -38,7 +38,7 @@ export default class Home extends Component {
     render() {
         return (
             <Container style={styles.container}>
-                <Header hasTabs style={{ backgroundColor: commonStyles.colors.primary }}>
+                <Header hasTabs style={styles.header}>
                     <StatusBar barStyle="light-content" backgroundColor={commonStyles.colors.statusBar} />
                     <Left >
                         <Button transparent onPress={() => this.props.navigation.openDrawer() }>
@@ -46,7 +46,7 @@ export default class Home extends Component {
                         </Button>
                     </Left>
                     <Body >
-                        <Title style={{ color: '#FFFFFF', fontSize: 16 }}>Home</Title>
+                        <Title style={styles.headerTitle}>Home</Title>
                     </Body>
                 </Header>
                 <View style={styles.body}>

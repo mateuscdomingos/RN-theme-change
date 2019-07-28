@@ -3,6 +3,7 @@ export default {
         primary: '#30A3D5',
         statusBar: '#30A3D5',
         background: '#f3f3f3',
+        borderColor: '#cfcfcf',
         mainText: '#2f2f2f',
         subText: '#7a7a7a',
         link: '#30A3D5'
@@ -12,8 +13,6 @@ export default {
             large: 16,
             regular: 14,
             medium: 12,
-            small: 11,
-            tiny: 10,
         },
         fontWeight: "600"
     },

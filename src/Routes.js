@@ -4,6 +4,7 @@ import {
     createDrawerNavigator,
     createStackNavigator
 } from 'react-navigation';
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 import Menu from './components/Menu'
 import Home from './pages/Home'
@@ -16,7 +17,10 @@ const MenuRoutes = {
         screen: props =>
             <Home {...props} />,
         navigationOptions: {
-            title: 'Home'
+            title: 'Home',
+            drawerIcon: (props) => (
+                <Icon name={'home'} size={23} style={props.focused ? {color: commonStyles.colors.primary} : {color: commonStyles.colors.mainText}} />
+            )
         }
     }
 }
