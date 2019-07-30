@@ -14,12 +14,15 @@ import {
     Button,
     Icon,
 } from "native-base"
+import { Provider } from 'react-redux';
 
 import commonStyles from '../../commonStyles'
 import styles from './styles'
 
 import newsList from '../../assets/json'
 import News from '../../components/News'
+
+import store from '../../store'
 
 // import { Container } from './styles';
 
@@ -31,6 +34,7 @@ export default class Home extends Component {
     componentDidMount = () => { 
         const news = newsList
         this.setState({ newsList: news }, () => console.log(this.state.newsList)) 
+        console.log(store)
     }
 
     openDetails = (item) => this.props.navigation.navigate('Details', { new: item })
@@ -49,11 +53,13 @@ export default class Home extends Component {
                         <Title style={styles.headerTitle}>Home</Title>
                     </Body>
                 </Header>
-                <View style={styles.body}>
-                    <FlatList data={this.state.newsList}
-                    keyExtractor={item =>  `${item.id}`}
-                    renderItem={({ item }) => <News new={ item } openDetails={ this.openDetails } />} />
-                </View>
+                <Provider store={store}>
+                    <View style={styles.body}>
+                        <FlatList data={this.state.newsList}
+                        keyExtractor={item =>  `${item.id}`}
+                        renderItem={({ item }) => <News new={ item } openDetails={ this.openDetails } />} />
+                    </View>
+                </Provider>
             </Container>
         );
     }

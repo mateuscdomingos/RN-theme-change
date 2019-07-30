@@ -9,14 +9,19 @@ import {
 
 import styles from './styles'
 
-export default (props) => {
+import { connect } from 'react-redux'
+
+const News = (props) => {
+    console.log(props)
     return (
         <View style={[styles.container, styles.shadow]}>
             <Text style={styles.title}>{props.new.title}</Text>
             <Text style={styles.body} numberOfLines={5}>{props.new.body}</Text>
             <TouchableOpacity onPress={ () => { props.openDetails(props.new) } }>
-                <Text style={styles.link}>See more...</Text>
+                <Text style={styles.link}>See more... {props.size.baseFont}</Text>
             </TouchableOpacity>
         </View>
     )
 }
+
+export default connect(state => ({ size: state.styles }) )(News)
