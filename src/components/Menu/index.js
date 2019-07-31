@@ -11,6 +11,7 @@ import RadioForm  from 'react-native-simple-radio-button'
 
 // import { Container } from './styles';
 import commonStyles from '../../commonStyles'
+import commonStyles2 from '../../commonStyles2'
 import store from '../../store'
 import * as StylesActions from '../../store/actions/styles';
 
@@ -21,12 +22,13 @@ const theme_props = [
 const font_props = [
     {label: 'Small', value: 0 },
     {label: 'Medium', value: 1 },
-    {label: 'Large', value: 2 }
+    {label: 'Large', value: 2 },
+    {label: 'Extra large', value: 3 }
 ]
 
 export default class Menu extends Component {
     componentDidMount = () => {
-        console.log(this.props)
+        console.log(commonStyles2)
     }
 
     onInputChange = (value) => {
