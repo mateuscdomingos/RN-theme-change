@@ -1,10 +1,10 @@
 import React from "react";
-import { useSelector } from 'react-redux';
+import store from './store';
 
-export default function commonStyles2() {
-    // const counter = useSelector(state => state.styles);
+function commonStyles2() {
+    const baseFont = store.getState().styles.baseFont;
 
-    return {
+    const stylesStatics = {
         colors: {
             primary: '#30A3D5',
             statusBar: '#30A3D5',
@@ -13,14 +13,6 @@ export default function commonStyles2() {
             mainText: '#2f2f2f',
             subText: '#7a7a7a',
             link: '#30A3D5'
-        },
-        font: {
-            fontSize: {
-                large: 16,
-                regular: 14,
-                medium: 12,
-            },
-            fontWeight: "600"
         },
         metrics: {
             baseMargin: 10,
@@ -40,4 +32,39 @@ export default function commonStyles2() {
             elevation: 3,
         }
     }
+
+    var font = {}
+
+    if(baseFont == 0){
+        font = {
+            font: {
+                fontSize: {
+                    large: 16,
+                    regular: 14,
+                    medium: 12,
+                },
+                fontWeight: "600"
+            }
+        }
+    }else{
+        font = {
+            font: {
+                fontSize: {
+                    large: 18,
+                    regular: 16,
+                    medium: 14,
+                },
+                fontWeight: "600"
+            }
+        }
+    }
+
+    const styles = {
+        ...stylesStatics,
+        ...font
+    }
+
+    return styles
 }
+
+export default commonStyles2

@@ -4,6 +4,8 @@ import commonStyles2 from '../../commonStyles2'
 
 const commonStyles = commonStyles2()
 
+console.log(commonStyles)
+
 const styles = StyleSheet.create({
     container: {
         padding: commonStyles.metrics.basePadding,

@@ -4,6 +4,8 @@ export default {
         statusBar: '#30A3D5',
         background: '#f3f3f3',
         borderColor: '#cfcfcf',
+        containerBackgroundColor: '#ffffff',
+        shadowColor: "#ccc",
         mainText: '#2f2f2f',
         subText: '#7a7a7a',
         link: '#30A3D5'

@@ -20,7 +20,7 @@ import commonStyles from '../../commonStyles'
 import styles from './styles'
 
 import newsList from '../../assets/json'
-import News from '../../components/News'
+import New from '../../components/New'
 
 import store from '../../store'
 
@@ -57,7 +57,7 @@ export default class Home extends Component {
                     <View style={styles.body}>
                         <FlatList data={this.state.newsList}
                         keyExtractor={item =>  `${item.id}`}
-                        renderItem={({ item }) => <News new={ item } openDetails={ this.openDetails } />} />
+                        renderItem={({ item }) => <New new={ item } openDetails={ this.openDetails } />} />
                     </View>
                 </Provider>
             </Container>

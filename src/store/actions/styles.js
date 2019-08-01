@@ -1,4 +1,4 @@
-export default function toggleFontSize(baseFont) {
+export function toggleFontSize(baseFont) {
     return {
         type: 'TOGGLE_FONTSIZE',
         baseFont,
