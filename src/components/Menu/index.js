@@ -27,10 +27,6 @@ const font_props = [
 ]
 
 export default class Menu extends Component {
-    componentDidMount = () => {
-        console.log(commonStyles2)
-    }
-
     onInputChange = (value) => {
         store.dispatch(StylesActions.toggleFontSize(value))
     }

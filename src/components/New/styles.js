@@ -10,17 +10,17 @@ export const Container = styled.View`
 `;
 
 export const Title = styled.Text`
-  font-size: ${commonStyles.font.fontSize.large}px;
-  font-weight: ${commonStyles.font.fontWeight};
+  font-size: ${props => props.styles.font.fontSize.large}px;
+  font-weight: ${props => props.styles.font.fontWeight};
   color: ${commonStyles.colors.mainText};
 `;
 
 export const Body = styled.Text`
-  font-size: ${commonStyles.font.fontSize.regular}px;
+  font-size: ${props => props.styles.font.fontSize.regular}px;
   color: ${commonStyles.colors.subText};
 `;
 
 export const Link = styled.Text`
-  font-size: ${commonStyles.font.fontSize.medium}px;
+  font-size: ${props => props.styles.font.fontSize.medium}px;
   color: ${commonStyles.colors.link};
 `;

@@ -27,7 +27,6 @@ export default class Details extends Component {
 
     componentDidMount = () => { 
         let item = this.props.navigation.getParam('new')
-        console.log(item)
         this.setState({ item })
     }
 
