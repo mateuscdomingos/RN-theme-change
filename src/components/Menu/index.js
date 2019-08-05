@@ -11,7 +11,6 @@ import RadioForm  from 'react-native-simple-radio-button'
 
 // import { Container } from './styles';
 import commonStyles from '../../commonStyles'
-import commonStyles2 from '../../commonStyles2'
 import store from '../../store'
 import * as StylesActions from '../../store/actions/styles';
 

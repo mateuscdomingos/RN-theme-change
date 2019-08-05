@@ -1,7 +1,10 @@
+import { Platform } from 'react-native';
+
 export default {
     colors: {
         primary: '#30A3D5',
         statusBar: '#30A3D5',
+        barTextColor: '#FFF',
         background: '#f3f3f3',
         borderColor: '#cfcfcf',
         containerBackgroundColor: '#ffffff',
@@ -12,6 +15,7 @@ export default {
     },
     font: {
         fontSize: {
+            textBar: 20,
             large: 16,
             regular: 14,
             medium: 12,
@@ -23,7 +27,11 @@ export default {
         basePadding: 15,
         baseMarginVertical: 4,
         baseMarginHorizontal: 10,
-        borderRadius: 5
+        borderRadius: 5,
+        ...Platform.select({
+            ios: { headerHeight: 74, headerPadding: 30 },
+            android: { headerHeight: 44, headerPadding: 0 }
+        })
     },
     shadow: {
         shadowColor: "#000",

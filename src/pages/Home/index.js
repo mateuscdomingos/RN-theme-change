@@ -1,65 +1,39 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { 
     View, 
-    StatusBar,
     FlatList
 } from 'react-native';
-import {
-    Container,
-    Header,
-    Left,
-    Body,
-    Title,
-    Button,
-    Icon,
-} from "native-base"
-import { Provider } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-import commonStyles from '../../commonStyles'
-import styles from './styles'
+import { Container, Title, Body, Link } from './styles';
 
-import newsList from '../../assets/json'
+import newsListJson from '../../assets/json'
 import New from '../../components/New'
+import Header from '../../components/Header';
 
-import store from '../../store'
+export default function Home(props) {
+    const styles = useSelector(state => state.styles)
+    const [newsList, setNewsList] = useState([])
 
-// import { Container } from './styles';
-
-export default class Home extends Component {
-    state = {
-        newsList: []
+    function updateNewsList(news) {
+        setNewsList(news)
     }
 
-    componentDidMount = () => { 
-        const news = newsList
-        this.setState({ newsList: news })
-    }
+    useEffect(() => {
+        updateNewsList(newsListJson)
+    }, [])
 
-    openDetails = (item) => this.props.navigation.navigate('Details', { new: item })
+    openDetails = (item) => props.navigation.navigate('Details', { new: item })
 
-    render() {
-        return (
-            <Container style={styles.container}>
-                <Header hasTabs style={styles.header}>
-                    <StatusBar barStyle="light-content" backgroundColor={commonStyles.colors.statusBar} />
-                    <Left >
-                        <Button transparent onPress={() => this.props.navigation.openDrawer() }>
-                            <Icon name="menu" style={{color: '#FFFFFF'}} />
-                        </Button>
-                    </Left>
-                    <Body >
-                        <Title style={styles.headerTitle}>Home</Title>
-                    </Body>
-                </Header>
-                <Provider store={store}>
-                    <View style={styles.body}>
-                        <FlatList data={this.state.newsList}
-                        keyExtractor={item =>  `${item.id}`}
-                        renderItem={({ item }) => <New new={ item } openDetails={ this.openDetails } />} />
-                    </View>
-                </Provider>
-            </Container>
-        );
-    }
+    return (
+        <Container >
+            <Header />
+            <View >
+                <FlatList data={newsList}
+                keyExtractor={item =>  `${item.id}`}
+                renderItem={({ item }) => <New new={ item } openDetails={ openDetails } />} />
+            </View>
+        </Container>
+    );
 }
