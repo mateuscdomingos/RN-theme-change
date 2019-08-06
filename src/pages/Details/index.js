@@ -1,54 +1,29 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from "react-redux";
 
-import { 
-    View, 
-    Text,
-    StatusBar,
-} from 'react-native';
-import {
-    Container,
-    Header,
-    Left,
-    Body,
-    Title,
-    Button,
-    Icon,
-} from "native-base"
-
-import commonStyles from '../../commonStyles'
-import styles from './styles'
+import { Container, NewContainer, Title, Body } from './styles';
+import Header from '../../components/Header';
 
 // import { Container } from './styles';
 
-export default class Details extends Component {
-    state = {
-        item: {}
-    }
+export default function Details (props) {
+    const styles = useSelector(state => state.styles);
+    const [item, setItem] = useState([])
 
-    componentDidMount = () => { 
-        let item = this.props.navigation.getParam('new')
-        this.setState({ item })
-    }
+    useEffect(() => {
+        let item = props.navigation.getParam('new')
+        setItem(item)
+    }, [])
 
-    render() {
-        return (
-            <Container style={styles.container}>
-                <Header hasTabs style={{ backgroundColor: commonStyles.colors.primary }}>
-                    <StatusBar barStyle="light-content" backgroundColor={commonStyles.colors.statusBar} />
-                    <Left >
-                        <Button transparent onPress={() => console.log(this.props.navigation.goBack()) }>
-                            <Icon name="arrow-back" style={{color: '#FFFFFF'}} />
-                        </Button>
-                    </Left>
-                    <Body >
-                        <Title style={{ color: '#FFFFFF', fontSize: 16 }}>Details</Title>
-                    </Body>
-                </Header>
-                <View style={[styles.newContainer, styles.shadow]}>
-                    <Text style={styles.title}>{this.state.item.title}</Text>
-                    <Text style={styles.body}>{this.state.item.body}</Text>
-                </View>
-            </Container>
-        );
-    }
+    backPage = () => props.navigation.goBack()
+
+    return (
+        <Container>
+            <Header title="Details" iconName="ios-arrow-back" pressIcon={backPage} />
+            <NewContainer>
+                <Title styles={styles}>{item.title}</Title>
+                <Body styles={styles}>{item.body}</Body>
+            </NewContainer>
+        </Container>
+    );
 }

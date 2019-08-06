@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
 
 import { View, Text, ScrollView, StyleSheet, StatusBar } from 'react-native';
-import {
-    Header,
-    Body,
-    Title
-} from "native-base"
+import { useSelector, useDispatch } from "react-redux";
 import { DrawerItems, SafeAreaView } from 'react-navigation';
-import RadioForm  from 'react-native-simple-radio-button'
+import RadioForm  from 'react-native-simple-radio-button';
 
-// import { Container } from './styles';
-import commonStyles from '../../commonStyles'
-import store from '../../store'
+import { ContainerBody, Title, Body, BodyTitle } from './styles';
+import Header from '../Header';
+import commonStyles from '../../commonStyles';
 import * as StylesActions from '../../store/actions/styles';
 
 const theme_props = [
@@ -25,59 +21,78 @@ const font_props = [
     {label: 'Extra large', value: 3 }
 ]
 
-export default class Menu extends Component {
+export default function Menu (props) {
+    const styles = useSelector(state => state.styles);
+    const dispatch = useDispatch();
+
+    const styleRadioLabel = {
+        marginRight: 20,
+        fontSize: styles.font.fontSize.medium,
+        color: styles.colors.subText
+    }
+
+    const labelStyle = {
+        fontWeight: 'normal',
+        color: styles.colors.mainText,
+        fontSize: styles.font.fontSize.regular
+    }
+    const activeLabelStyle = {
+        color: styles.colors.primary,
+    }
+
+    const drawerItemsConfig = {
+        ...props,
+        labelStyle,
+        activeLabelStyle,
+
+    }
+
+    console.log(styles.font.fontSize.large)
+
     onInputChange = (value) => {
-        store.dispatch(StylesActions.toggleFontSize(value))
+        dispatch(StylesActions.toggleFontSize(value))
     }
-    render() {
-        return (
-            <View>
-                <Header hasTabs style={{ backgroundColor: commonStyles.colors.primary }}>
-                    <StatusBar barStyle="light-content" backgroundColor={commonStyles.colors.statusBar} />
-                    <Body >
-                        <Title style={{ color: '#FFFFFF', fontSize: 16 }}>Menu</Title>
+    
+    return (
+        <View>
+            <Header title="Menu" />
+            <StatusBar barStyle="light-content" backgroundColor={styles.colors.statusBar} />
+            <ScrollView>
+                <View>
+                    <SafeAreaView style={{ flex: 1 }} forceInset={{ top: 'always', horizontal: 'never' }}>
+                        <DrawerItems {...drawerItemsConfig} />
+                    </SafeAreaView>
+                </View>
+                <ContainerBody styles={styles}>
+                    <Title styles={styles}>Settings</Title>
+                    <Body styles={styles}>
+                        <BodyTitle styles={styles}>Theme</BodyTitle>
+                        <RadioForm
+                        radio_props={theme_props}
+                        buttonSize={12}
+                        buttonColor={styles.colors.secondary}
+                        selectedButtonColor={styles.colors.secondary}
+                        formHorizontal={true}
+                        labelStyle={styleRadioLabel}
+                        onPress={(value) => { onInputChange(value)}} />
                     </Body>
-                </Header>
-                <ScrollView>
-                    <View>
-                        <SafeAreaView style={styles.container} forceInset={{ top: 'always', horizontal: 'never' }}>
-                            <DrawerItems {...this.props} />
-                        </SafeAreaView>
-                    </View>
-                    <View style={styles.containerBody}>
-                        <Text style={styles.settings}>Settings</Text>
-                        <View style={styles.body}>
-                            <Text style={styles.bodyTitle}>Theme</Text>
-                            <RadioForm
-                            radio_props={theme_props}
-                            buttonSize={12}
-                            buttonColor={commonStyles.colors.secondary}
-                            selectedButtonColor={commonStyles.colors.secondary}
-                            formHorizontal={true}
-                            labelStyle={styles.formLabel}
-                            onPress={(value) => { this.onInputChange(value)}} />
-                        </View>
-                        <View style={styles.body}>
-                            <Text style={styles.bodyTitle}>Font Size</Text>
-                            <RadioForm
-                            radio_props={font_props}
-                            buttonSize={12}
-                            buttonColor={commonStyles.colors.secondary}
-                            selectedButtonColor={commonStyles.colors.secondary}
-                            labelStyle={styles.formLabel}
-                            onPress={(value) => { this.onInputChange(value)}} />
-                        </View>
-                    </View>
-                </ScrollView>
-            </View>
-        );
-    }
+                    <Body styles={styles}>
+                        <BodyTitle styles={styles}>Font Size</BodyTitle>
+                        <RadioForm
+                        radio_props={font_props}
+                        buttonSize={12}
+                        buttonColor={styles.colors.secondary}
+                        selectedButtonColor={styles.colors.secondary}
+                        labelStyle={styleRadioLabel}
+                        onPress={(value) => { onInputChange(value)}} />
+                    </Body>
+                </ContainerBody>
+            </ScrollView>
+        </View>
+    );
 }
 
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-    },
+const styless = StyleSheet.create({
     containerBody: {
         marginTop: 5,
         borderTopWidth: 1,
@@ -98,10 +113,5 @@ const styles = StyleSheet.create({
         fontSize: commonStyles.font.fontSize.regular,
         color: commonStyles.colors.mainText,
         marginBottom: 5
-    },
-    formLabel: {
-        marginRight: 20,
-        fontSize: commonStyles.font.fontSize.medium,
-        color: commonStyles.colors.subText
-    },
+    }
 });

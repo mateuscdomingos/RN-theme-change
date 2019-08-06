@@ -3,4 +3,5 @@ import commonStyles from '../../commonStyles';
 
 export const Container = styled.View`
   background-color: ${commonStyles.colors.background};
+  height: 100%;
 `;

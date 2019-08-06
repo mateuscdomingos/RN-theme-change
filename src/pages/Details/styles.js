@@ -1,29 +1,27 @@
-import { StyleSheet } from 'react-native';
+import styled from 'styled-components/native';
+import commonStyles from '../../commonStyles';
 
-import commonStyles from '../../commonStyles'
+export const Container = styled.View`
+    background-color: ${commonStyles.colors.background};
+    height: 100%;
+`;
 
-const styles = StyleSheet.create({
-    container: {
-        backgroundColor: commonStyles.colors.background
-    },
-    newContainer: {
-        padding: commonStyles.metrics.basePadding,
-        borderRadius: commonStyles.metrics.borderRadius,
-        marginVertical: commonStyles.metrics.baseMarginVertical,
-        marginHorizontal: commonStyles.metrics.baseMarginHorizontal,
-        backgroundColor: '#FFFFFF',
-    },
-    shadow: commonStyles.shadow,
-    title: {
-        fontSize: commonStyles.font.fontSize.large,
-        fontWeight: commonStyles.font.fontWeight,
-        color: commonStyles.colors.mainText
-    },
-    body: {
-        marginTop: 5,
-        fontSize: commonStyles.font.fontSize.regular,
-        color: commonStyles.colors.subText
-    },
-});
-  
-export default styles;
+export const NewContainer = styled.View`
+
+    padding: ${commonStyles.metrics.basePadding}px;
+    border-radius: ${commonStyles.metrics.borderRadius}px;
+    margin: ${commonStyles.metrics.baseMarginVertical}px ${commonStyles.metrics.baseMarginHorizontal}px;
+    background-color: ${commonStyles.colors.containerBackgroundColor};
+    box-shadow: 2px 2px 2px ${commonStyles.colors.shadowColor};
+`;
+
+export const Title = styled.Text`
+    font-size: ${props => props.styles.font.fontSize.large}px;
+    font-weight: ${props => props.styles.font.fontWeight};
+    color: ${commonStyles.colors.mainText};
+`;
+
+export const Body = styled.Text`
+    font-size: ${props => props.styles.font.fontSize.regular}px;
+    color: ${commonStyles.colors.subText};
+`;

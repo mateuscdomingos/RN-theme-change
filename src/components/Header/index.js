@@ -1,15 +1,28 @@
 import React from 'react';
-import { View } from 'react-native';
+import { TouchableOpacity } from 'react-native';
+
 import Icon from 'react-native-vector-icons/Ionicons';
-import commonStyles from '../../commonStyles';
+import { useSelector } from "react-redux";
 
-import { Container, Title } from './styles';
+import { Container, Title, TitleContainer } from './styles';
 
-export default function Header() {
+export default function Header(props) {
+    const styles = useSelector(state => state.styles);
     return (
         <Container>
-            <Icon name="ios-arrow-back" size={24} color={commonStyles.colors.barTextColor} />
-            <Title>Teste</Title>
+            {
+                props.iconName && props.pressIcon && 
+                <TouchableOpacity onPress={ () => props.pressIcon() }>
+                    <Icon name={props.iconName} 
+                    size={styles.font.fontSize.icon} 
+                    color={styles.colors.barTextColor} 
+                    />
+                </TouchableOpacity>
+            }
+            
+            <TitleContainer>
+                <Title styles={styles}>{props.title}</Title>
+            </TitleContainer>
         </Container>
     );
 }

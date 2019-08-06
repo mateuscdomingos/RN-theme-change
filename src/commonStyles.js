@@ -29,7 +29,7 @@ export default {
         baseMarginHorizontal: 10,
         borderRadius: 5,
         ...Platform.select({
-            ios: { headerHeight: 74, headerPadding: 30 },
+            ios: { headerHeight: 80, headerPadding: 35 },
             android: { headerHeight: 44, headerPadding: 0 }
         })
     },
