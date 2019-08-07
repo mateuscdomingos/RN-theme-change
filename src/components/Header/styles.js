@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 import commonStyles from '../../commonStyles';
 
 export const Container = styled.View`
-    background-color: ${commonStyles.colors.primary};
+    background-color: ${props => props.styles.colors.primary};
     height: ${commonStyles.metrics.headerHeight};
     padding-top: ${commonStyles.metrics.headerPadding};
     padding-right: ${commonStyles.metrics.basePadding};
@@ -17,7 +17,7 @@ export const TitleContainer = styled.View`
 `;
 
 export const Title = styled.Text`
-    color: ${commonStyles.colors.barTextColor};
+    color: ${props => props.styles.colors.barTextColor};
     font-size: ${props => props.styles.font.fontSize.textBar}px;
     font-weight: ${props => props.styles.font.fontWeight};
 `;

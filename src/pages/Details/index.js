@@ -18,9 +18,9 @@ export default function Details (props) {
     backPage = () => props.navigation.goBack()
 
     return (
-        <Container>
+        <Container styles={styles}>
             <Header title="Details" iconName="ios-arrow-back" pressIcon={backPage} />
-            <NewContainer>
+            <NewContainer styles={styles}>
                 <Title styles={styles}>{item.title}</Title>
                 <Body styles={styles}>{item.body}</Body>
             </NewContainer>

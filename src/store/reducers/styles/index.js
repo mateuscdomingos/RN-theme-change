@@ -6,7 +6,21 @@ INITIAL_STATE = {
 }
 
 export default function styles(state = INITIAL_STATE, action) {
-    if(action.type == "TOGGLE_FONTSIZE"){
+    if(action.type == "TOGGLE_THEME"){
+        switch (action.theme) {
+            case 0:
+                return {
+                    ...state,
+                    colors: { ...stylesApp.colors_ligth }
+                }
+            case 1:
+                return {
+                    ...state,
+                    colors: { ...stylesApp.colors_dark }
+                }
+        }
+    }
+    else if(action.type == "TOGGLE_FONTSIZE"){
         switch (action.baseFont) {
             case 0:
                 return {

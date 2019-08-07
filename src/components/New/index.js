@@ -8,7 +8,7 @@ import { Container, Title, Body, Link } from './styles';
 export default function New(props) {
     const styles = useSelector(state => state.styles);
     return (
-        <Container>
+        <Container styles={styles}>
             <Title styles={styles}>{props.new.title}</Title>
             <Body styles={styles} numberOfLines={4}>{props.new.body}</Body>
             <TouchableOpacity onPress={ () => { props.openDetails(props.new) } }>

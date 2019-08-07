@@ -2,26 +2,25 @@ import styled from 'styled-components/native';
 import commonStyles from '../../commonStyles';
 
 export const Container = styled.View`
-    background-color: ${commonStyles.colors.background};
+    background-color: ${props => props.styles.colors.background};
     height: 100%;
 `;
 
 export const NewContainer = styled.View`
-
     padding: ${commonStyles.metrics.basePadding}px;
     border-radius: ${commonStyles.metrics.borderRadius}px;
     margin: ${commonStyles.metrics.baseMarginVertical}px ${commonStyles.metrics.baseMarginHorizontal}px;
-    background-color: ${commonStyles.colors.containerBackgroundColor};
-    box-shadow: 2px 2px 2px ${commonStyles.colors.shadowColor};
+    background-color: ${props => props.styles.colors.containerBackgroundColor};
+    box-shadow: 2px 2px 2px ${props => props.styles.colors.shadowColor};
 `;
 
 export const Title = styled.Text`
     font-size: ${props => props.styles.font.fontSize.large}px;
     font-weight: ${props => props.styles.font.fontWeight};
-    color: ${commonStyles.colors.mainText};
+    color: ${props => props.styles.colors.mainText};
 `;
 
 export const Body = styled.Text`
     font-size: ${props => props.styles.font.fontSize.regular}px;
-    color: ${commonStyles.colors.subText};
+    color: ${props => props.styles.colors.subText};
 `;

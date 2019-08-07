@@ -9,7 +9,7 @@ import { Container, Title, TitleContainer } from './styles';
 export default function Header(props) {
     const styles = useSelector(state => state.styles);
     return (
-        <Container>
+        <Container styles={styles}>
             {
                 props.iconName && props.pressIcon && 
                 <TouchableOpacity onPress={ () => props.pressIcon() }>

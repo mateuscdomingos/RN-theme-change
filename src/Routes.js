@@ -4,7 +4,7 @@ import {
     createDrawerNavigator,
     createStackNavigator
 } from 'react-navigation';
-import Icon from 'react-native-vector-icons/FontAwesome'
+import IconMenu from './components/IconMenu';
 
 import Menu from './components/Menu'
 import Home from './pages/Home'
@@ -19,7 +19,7 @@ const MenuRoutes = {
         navigationOptions: {
             title: 'Home',
             drawerIcon: (props) => (
-                <Icon name={'home'} size={23} style={props.focused ? {color: commonStyles.colors.primary} : {color: commonStyles.colors.mainText}} />
+                <IconMenu name='home' info={props} />
             )
         }
     }
@@ -27,17 +27,7 @@ const MenuRoutes = {
 
 const MenuConfig = {
     initialRouteName: 'Home',
-    contentComponent: Menu,
-    contentOptions: {
-        labelStyle: {
-            fontWeight: 'normal',
-            color: commonStyles.colors.mainText,
-            fontSize: commonStyles.font.fontSize.menu
-        },
-        activeLabelStyle: {
-            color: commonStyles.colors.primary,
-        }
-    }
+    contentComponent: Menu
 }
 
 const MenuNavigator = createDrawerNavigator(MenuRoutes, MenuConfig)

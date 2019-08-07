@@ -1,7 +1,5 @@
 import styled from 'styled-components/native';
-import commonStyles from '../../commonStyles';
-
 export const Container = styled.View`
-  background-color: ${commonStyles.colors.background};
-  height: 100%;
+    background-color: ${props => props.styles.colors.background};
+    height: 100%;
 `;

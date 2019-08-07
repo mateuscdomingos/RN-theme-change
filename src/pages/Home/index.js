@@ -28,10 +28,10 @@ export default function Home(props) {
     openDetails = (item) => props.navigation.navigate('Details', { new: item })
 
     return (
-        <Container >
+        <Container styles={styles}>
             <Header title="Home" iconName="ios-menu" pressIcon={openMenu} />
             <StatusBar barStyle="light-content" backgroundColor={styles.colors.statusBar} />
-            <View style={{ flex: 1 }} >
+            <View style={{ flex: 1, marginTop: 4 }} >
                 <FlatList data={newsList}
                 keyExtractor={item =>  `${item.id}`}
                 renderItem={({ item }) => <New new={ item } openDetails={ openDetails } />} />

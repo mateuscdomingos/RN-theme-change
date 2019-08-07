@@ -1,6 +1,11 @@
 import styled from 'styled-components/native';
 import commonStyles from '../../commonStyles';
 
+export const Container = styled.View`
+    background-color: ${props => props.styles.colors.containerBackgroundColor};
+    height: 100%;
+`;
+
 export const ContainerBody = styled.View`
     margin-top: 5px;
     border-top-width: 1px;
@@ -11,7 +16,7 @@ export const ContainerBody = styled.View`
 export const Title = styled.Text`
     font-size: ${props => props.styles.font.fontSize.large}px;
     font-weight: ${props => props.styles.font.fontWeight};
-    color: ${commonStyles.colors.mainText};
+    color: ${props => props.styles.colors.mainText};
     margin-bottom: ${commonStyles.metrics.baseMargin}px;
 `;
 
@@ -23,6 +28,6 @@ export const Body = styled.View`
 
 export const BodyTitle = styled.Text`
     font-size: ${props => props.styles.font.fontSize.regular}px;
-    color: ${commonStyles.colors.mainText};
+    color: ${props => props.styles.colors.mainText};
     margin-bottom: 5px;
 `;
