@@ -1,4 +1,4 @@
-#### Projeto acessibilidade React-Native
+#### React-Native accessibility project
 
 ### `npm install`
 
