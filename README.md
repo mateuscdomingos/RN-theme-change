@@ -12,7 +12,7 @@ This project was developed as a study to reach people with low vision and color 
 | [styled-components](https://www.styled-components.com/)                                          | ^4.3.2   |
 | [react-navigation](https://reactnavigation.org)                                                  | ^3.11.1  | 
 | [react-native-gesture-handler](https://kmagiera.github.io/react-native-gesture-handler/)         | ^1.3.0   |
-| [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons)                | 4.7.0 +  |
+| [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons)                | ^6.6.0   |
 | [react-native-simple-radio-button](https://github.com/moschan/react-native-simple-radio-button)  | ^2.7.3   |
 
 ---
